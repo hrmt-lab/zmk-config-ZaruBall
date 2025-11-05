@@ -190,6 +190,7 @@
         // Extra layer can be added in ZMK STUDIO
 
         layer_5 {
+            display-name = "KiCad";
             bindings = <
 &kp ESC    &kp N1  &kp N2  &kp N3  &kp N4    &kp N5                 &trans  &trans  &trans  &trans            &kp N6  &kp N7  &kp N8     &kp N9   &kp N0    &kp BSPC
 &kp TAB    &kp Q   &kp W   &kp E   &kp R     &kp U                  &trans  &trans  &trans  &trans            &kp Y   &kp U   &kp I      &kp O    &kp P     &kp LBKT
@@ -198,7 +199,6 @@
 &trans     &trans          &to 0   &kp LGUI  &kp LALT  &kp SPACE                                      &trans  &trans                                        &trans
             >;
 
-            label = "KiCad";
             sensor-bindings = <&inc_dec_kp LC(Y) LC(Z)>;
         };
     };
