@@ -117,6 +117,11 @@
             bindings = <&mo 4>;
             key-positions = <71 70>;
         };
+
+        to_mouselayer {
+            bindings = <&mo 1>;
+            key-positions = <46 47>;
+        };
     };
 
     keymap {
