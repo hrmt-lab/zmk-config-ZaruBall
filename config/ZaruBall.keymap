@@ -46,14 +46,14 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt LALT LANG2>, <&mo RAISE>, <&mo MOUSE>;
+            bindings = <&mt LALT LANG2>, <&mo 3>, <&mo 1>;
         };
 
         td1: tap_dance_1 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt RCTL LANG1>, <&mo RAISE>, <&mo MOUSE>;
+            bindings = <&mt RCTL LANG1>, <&mo 3>, <&mo 1>;
         };
 
         // Customed Hold-Tap for SandS
@@ -68,6 +68,13 @@
 
             display-name = "SandS";
         };
+
+        td2: td2 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD2";
+            #binding-cells = <0>;
+            bindings = <&kp MINUS>, <&kp N0>;
+        };
     };
 };
 
@@ -79,7 +86,7 @@
         to_layer_0: to_layer_0 {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&tog MOUSE &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+            bindings = <&tog 1 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "TO_layer_0";
         };
 
@@ -95,7 +102,7 @@
                 <&macro_release>,
                 <&macro_param_1to1 &mkp MACRO_PLACEHOLDER>,
                 <&macro_tap>,
-                <&sl MOUSE>;
+                <&sl 1>;
 
             label = "MKP_EXIT_AML";
         };
@@ -103,6 +110,15 @@
 };
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        to_adjust_Layer {
+            bindings = <&mo 4>;
+            key-positions = <71 70>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -110,11 +126,11 @@
             display-name = "Base";
             sensor-bindings = <&scroll_down_up>;
             bindings = <
-&kp ESC    &kp N1      &kp N2  &kp N3    &kp N4     &kp N5                            &kp KP_N7     &kp KP_N8  &kp KP_N9   &kp KP_DIVIDE                 &kp NUMBER_6  &kp N7  &kp N8     &kp N9   &kp N0    &kp MINUS
-&kp TAB    &kp Q       &kp W   &kp E     &kp R      &kp T                             &kp KP_N4     &kp KP_N5  &kp KP_N6   &kp KP_MULTIPLY               &kp Y         &kp U   &kp I      &kp O    &kp P     &kp EQUAL
-&kp CAPS   &kp A       &kp S   &kp D     &kp F      &kp G               &kp INS       &kp KP_N1     &kp KP_N2  &kp KP_N3   &kp KP_MINUS       &kp LBKT   &kp H         &kp J   &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z       &kp X   &kp C     &kp V      &kp B               &kp GRAVE     &kp KP_ENTER  &kp KP_N0  &kp KP_DOT  &kp KP_PLUS        &kp RBKT   &kp N         &kp M   &kp COMMA  &kp DOT  &kp FSLH  &lt SCROLL BACKSLASH
-&td0       &kp C_MUTE          &kp LWIN  &kp LCTRL  &SandS LSHFT SPACE  &mo SCROLL                                                            &lt 3 RET  &kp BSPC                                            &td1
+&kp ESC     &kp N1      &kp N2  &kp N3  &kp N4    &kp N5                        &kp KP_N7     &kp KP_N8  &kp KP_N9   &kp KP_DIVIDE                    &kp NUMBER_6     &kp N7  &kp N8     &kp N9   &td2      &kp BACKSPACE
+&kp TAB     &kp Q       &kp W   &kp E   &kp R     &kp T                         &kp KP_N4     &kp KP_N5  &kp KP_N6   &kp KP_MULTIPLY                  &kp Y            &kp U   &kp I      &kp O    &kp P     &kp LBKT
+&kp LCTRL   &kp A       &kp S   &kp D   &kp F     &kp G          &kp UP         &kp KP_N1     &kp KP_N2  &kp KP_N3   &kp KP_MINUS       &kp LEFT      &kp H            &kp J   &kp K      &kp L    &kp SEMI  &kp ENTER
+&kp LSHFT   &kp Z       &kp X   &kp C   &kp V     &kp B          &kp DOWN       &kp KP_ENTER  &kp KP_N0  &kp KP_DOT  &kp KP_PLUS        &kp RIGHT     &kp N            &kp M   &kp COMMA  &kp DOT  &kp FSLH  &kp INT_RO
+&lt 1 INT5  &kp C_MUTE          &to 5   &kp LGUI  &mt LALT INT5  &lt 2 SPACE                                                            &lt 3 DELETE  &lt 3 BACKSPACE                                        &lt 1 INT4
             >;
         };
 
@@ -125,7 +141,7 @@
 &to_layer_0 ESC     &to_layer_0 N1  &to_layer_0 N2  &to_layer_0 N3  &to_layer_0 N4  &to_layer_0 N5                     &trans  &trans  &trans  &trans                     &to_layer_0 N6  &to_layer_0 N7  &to_layer_0 N8  &to_layer_0 N9      &to_layer_0 N0            &to_layer_0 MINUS
 &to_layer_0 TAB     &to_layer_0 Q   &to_layer_0 W   &to_layer_0 E   &to_layer_0 R   &to_layer_0 T                      &trans  &trans  &trans  &trans                     &to_layer_0 Y   &to_layer_0 U   &to_layer_0 I   &to_layer_0 O       &to_layer_0 P             &to_layer_0 EQUAL
 &to_layer_0 CAPS    &to_layer_0 A   &mkp RCLK       &mkp MCLK       &mkp LCLK       &msc SCRL_UP    &msc SCRL_LEFT     &trans  &trans  &trans  &trans    &msc SCRL_LEFT   &msc SCRL_UP    &mkp LCLK       &mkp MCLK       &mkp RCLK           &to_layer_0 SINGLE_QUOTE  &to_layer_0 SEMICOLON
-&to_layer_0 LSHIFT  &to_layer_0 Z   &to_layer_0 X   &mkp MB4        &mkp MB5        &msc SCRL_DOWN  &msc SCRL_RIGHT    &trans  &trans  &trans  &trans    &msc SCRL_RIGHT  &msc SCRL_DOWN  &mkp MB4        &mkp MB5        &to_layer_0 PERIOD  &to_layer_0 SLASH         &lt SCROLL BACKSLASH
+&to_layer_0 LSHIFT  &to_layer_0 Z   &to_layer_0 X   &mkp MB4        &mkp MB5        &msc SCRL_DOWN  &msc SCRL_RIGHT    &trans  &trans  &trans  &trans    &msc SCRL_RIGHT  &msc SCRL_DOWN  &mkp MB4        &mkp MB5        &to_layer_0 PERIOD  &to_layer_0 SLASH         &lt 2 BACKSLASH
 &trans              &trans                          &trans          &trans          &trans          &trans                                               &trans           &trans                                                                                        &trans
             >;
         };
@@ -134,11 +150,11 @@
             display-name = "Lower";
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             bindings = <
-&trans  &kp F1     &kp F2    &kp F3    &kp F4     &kp F5                 &trans  &trans  &trans  &trans              &kp LA(F2)    &kp KP_N7   &kp KP_N8  &kp KP_N9     &kp KP_SLASH     &kp KP_NUMLOCK
-&trans  &kp F6     &kp F7    &kp F8    &kp F9     &kp F10                &trans  &trans  &trans  &trans              &kp LA(F1)    &kp KP_N4   &kp KP_N5  &kp KP_N6     &kp KP_MULTIPLY  &none
-&trans  &kp F11    &kp F12   &kp UP    &none      &kp HOME  &kp PG_UP    &trans  &trans  &trans  &trans    &kp LPAR  &kp C_VOL_UP  &kp KP_N1   &kp KP_N2  &kp KP_N3     &kp KP_MINUS     &none
-&trans  &none      &kp LEFT  &kp DOWN  &kp RIGHT  &kp END   &kp PG_DN    &trans  &trans  &trans  &trans    &kp RPAR  &kp C_VOL_DN  &kp KP_DOT  &kp KP_N0  &kp KP_EQUAL  &kp KP_PLUS      &none
-&trans  &kp RSHFT            &trans    &trans     &trans    &trans                                         &trans    &kp DEL                                                             &studio_unlock
+&trans  &kp F1     &kp F2    &kp F3    &kp F4     &kp F5                 &trans  &trans  &trans  &trans               &kp LA(F2)    &kp N7  &kp N8     &kp N9   &kp KP_SLASH     &kp INT3
+&trans  &kp F6     &kp F7    &kp F8    &kp F9     &kp F10                &trans  &trans  &trans  &trans               &kp LA(F1)    &kp N4  &kp N5     &kp N6   &kp KP_MULTIPLY  &none
+&trans  &kp F11    &kp F12   &kp UP    &none      &kp HOME  &kp PG_UP    &trans  &trans  &trans  &trans    &kp PG_UP  &kp C_VOL_UP  &kp N1  &kp N2     &kp N3   &kp KP_MINUS     &kp ENTER
+&trans  &none      &kp LEFT  &kp DOWN  &kp RIGHT  &kp END   &kp PG_DN    &trans  &trans  &trans  &trans    &kp PG_DN  &kp C_VOL_DN  &kp N0  &kp COMMA  &kp DOT  &kp KP_PLUS      &kp RSHFT
+&trans  &kp RSHFT            &trans    &trans     &trans    &trans                                         &trans     &kp DEL                                                    &studio_unlock
             >;
         };
 
@@ -146,11 +162,11 @@
             display-name = "Raise";
             sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
             bindings = <
-&trans  &none  &none  &none      &none      &none                              &trans  &trans  &trans  &trans               &none     &none     &none     &none      &none  &none
-&trans  &none  &none  &none      &none      &none                              &trans  &trans  &trans  &trans               &none     &none     &none     &none      &none  &none
-&trans  &none  &none  &mkp RCLK  &mkp LCLK  &msc SCRL_UP    &msc SCRL_LEFT     &trans  &trans  &trans  &trans    &kp PG_UP  &kp HOME  &none     &kp UP    &none      &none  &none
-&trans  &none  &none  &mkp MB4   &mkp MB5   &msc SCRL_DOWN  &msc SCRL_RIGHT    &trans  &trans  &trans  &trans    &kp PG_DN  &kp END   &kp LEFT  &kp DOWN  &kp RIGHT  &none  &none
-&trans  &none         &trans     &trans     &trans          &trans                                               &trans     &kp DEL                                         &trans
+&trans  &kp F1      &kp F2      &kp F3      &kp F4            &kp F5                         &trans  &trans  &trans  &trans               &kp F6    &kp F7    &kp RBKT  &kp BSLH   &kp LS(INT3)  &none
+&trans  &none       &kp LS(N5)  &none       &none             &none                          &trans  &trans  &trans  &trans               &none     &none     &kp UP    &none      &none         &none
+&trans  &kp LS(N6)  &kp LS(N3)  &kp LS(N4)  &kp LS(NUMBER_7)  &kp LS(N2)  &msc SCRL_LEFT     &trans  &trans  &trans  &trans    &kp PG_UP  &kp HOME  &kp LEFT  &kp DOWN  &kp RIGHT  &none         &none
+&trans  &none       &none       &none       &none             &kp LS(N1)  &msc SCRL_RIGHT    &trans  &trans  &trans  &trans    &kp PG_DN  &kp END   &none     &none     &none      &none         &none
+&trans  &none                   &trans      &trans            &trans      &trans                                               &trans     &kp DEL                                                &trans
             >;
         };
 
@@ -158,18 +174,27 @@
             display-name = "Adjust";
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             bindings = <
-&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4            &trans  &trans  &trans  &trans              &bt BT_CLR_ALL  &none  &none  &none  &none  &none
-&trans  &none         &none         &none         &none         &none                   &trans  &trans  &trans  &trans              &bt BT_CLR      &none  &none  &none  &none  &none
-&trans  &none         &none         &none         &none         &none         &none     &trans  &trans  &trans  &trans    &ind_bat  &out OUT_TOG    &none  &none  &none  &none  &none
-&trans  &none         &none         &none         &none         &none         &none     &trans  &trans  &trans  &trans    &ind_con  &studio_unlock  &none  &none  &none  &none  &none
-&trans  &kp C_MUTE                  &trans        &trans        &trans        &trans                                      &trans    &kp DEL                                     &trans
+&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4            &trans  &trans  &trans  &trans              &bt BT_CLR_ALL  &none  &none  &none  &bt BT_CLR  &bt BT_CLR_ALL
+&trans  &none         &none         &none         &none         &none                   &trans  &trans  &trans  &trans              &bt BT_CLR      &none  &none  &none  &none       &none
+&trans  &none         &none         &none         &none         &none         &none     &trans  &trans  &trans  &trans    &ind_bat  &out OUT_TOG    &none  &none  &none  &none       &none
+&trans  &none         &none         &none         &none         &none         &none     &trans  &trans  &trans  &trans    &ind_con  &studio_unlock  &none  &none  &none  &none       &none
+&trans  &kp C_MUTE                  &trans        &trans        &trans        &trans                                      &trans    &kp DEL                                          &trans
             >;
         };
 
         // Extra layer can be added in ZMK STUDIO
 
-        extra1 { status = "reserved"; };
+        layer_5 {
+            bindings = <
+&kp ESC    &kp N1  &kp N2  &kp N3  &kp N4    &kp N5                 &trans  &trans  &trans  &trans            &kp N6  &kp N7  &kp N8     &kp N9   &kp N0    &kp BSPC
+&kp TAB    &kp Q   &kp W   &kp E   &kp R     &kp U                  &trans  &trans  &trans  &trans            &kp Y   &kp U   &kp I      &kp O    &kp P     &kp LBKT
+&kp LCTRL  &kp A   &kp S   &kp D   &kp M     &kp G     &kp DEL      &trans  &trans  &trans  &trans    &trans  &kp H   &kp J   &kp K      &kp L    &kp SEMI  &kp ENTER
+&kp LSHFT  &kp Z   &kp X   &kp C   &kp V     &kp B     &trans       &trans  &trans  &trans  &trans    &trans  &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+&trans     &trans          &to 0   &kp LGUI  &kp LALT  &kp SPACE                                      &trans  &trans                                        &trans
+            >;
 
-        extra2 { status = "reserved"; };
+            label = "KiCad";
+            sensor-bindings = <&inc_dec_kp LC(Y) LC(Z)>;
+        };
     };
 };
